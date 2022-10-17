@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import SingleTodo from "./SingleTodo";
+import { useState } from "react";
+
+const dummyData = [
+  "Get Halloween costume",
+  "Scare children",
+  "Steal candy fom the children",
+  "Eat all the candy",
+];
 
 function App() {
+  const [todos, setTodos] = useState(dummyData);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <header className="Header">Todo List</header>
+      <div>
+        {todos.map((todo) => (
+          <SingleTodo key={todo} todoName={todo} />
+        ))}
+      </div>
     </div>
   );
 }
